@@ -2,7 +2,7 @@
 
 > React adapter for any chartisan front-end on the web
 
-[![NPM](https://img.shields.io/npm/v/@chartisan/react.svg)](https://www.npmjs.com/package/@chartisan/react) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/@eternum/chartisan_react.svg)](https://www.npmjs.com/package/@eternum/chartisan_react) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 

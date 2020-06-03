@@ -1,10 +1,10 @@
 {
-  "name": "@chartisan/react",
+  "name": "@eternum/react",
   "version": "1.0.0",
   "description": "React adapter for any chartisan front-end on the web",
   "author": "ConsoleTVs",
   "license": "MIT",
-  "repository": "Chartisan/React",
+  "repository": "ConsoleTVs/ChartisanReact",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
@@ -27,10 +27,6 @@
     "react": "^16.0.0"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "@types/jest": "^25.1.4",
     "@types/node": "^12.12.38",
     "@types/react": "^16.9.27",
     "@types/react-dom": "^16.9.7",
@@ -55,7 +51,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1",
-    "typescript": "^3.7.5"
+    "typescript": "^3.7.5",
+    "@chartisan/chartisan": "^3.0.5"
   },
   "files": [
     "dist"

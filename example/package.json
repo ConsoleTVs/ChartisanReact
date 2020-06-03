@@ -10,18 +10,16 @@
     "eject": "node ../node_modules/react-scripts/bin/react-scripts.js eject"
   },
   "dependencies": {
-    "@testing-library/jest-dom": "file:../node_modules/@testing-library/jest-dom",
-    "@testing-library/react": "file:../node_modules/@testing-library/react",
-    "@testing-library/user-event": "file:../node_modules/@testing-library/user-event",
-    "@types/jest": "file:../node_modules/@types/jest",
+    "@chartisan/echarts": "^2.2.3",
+    "@chartisan/react": "file:..",
     "@types/node": "file:../node_modules/@types/node",
     "@types/react": "file:../node_modules/@types/react",
     "@types/react-dom": "file:../node_modules/@types/react-dom",
+    "echarts": "^4.8.0",
     "react": "file:../node_modules/react",
     "react-dom": "file:../node_modules/react-dom",
     "react-scripts": "file:../node_modules/react-scripts",
-    "typescript": "file:../node_modules/typescript",
-    "@chartisan/react": "file:.."
+    "typescript": "file:../node_modules/typescript"
   },
   "devDependencies": {
     "@babel/plugin-syntax-object-rest-spread": "^7.8.3"

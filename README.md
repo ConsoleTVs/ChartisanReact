@@ -1,4 +1,4 @@
-# @chartisan/react
+# @eternum/chartisan_react
 
 > React adapter for any chartisan front-end on the web
 

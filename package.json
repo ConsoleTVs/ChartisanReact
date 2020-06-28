@@ -1,12 +1,16 @@
 {
   "name": "@eternum/chartisan_react",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React adapter for any chartisan front-end on the web",
   "author": "ConsoleTVs",
   "license": "MIT",
-  "repository": "ConsoleTVs/ChartisanReact",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ConsoleTVs/ChartisanReact.git"
+  },
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
+  "types": "dist/index.d.ts",
   "source": "src/index.tsx",
   "engines": {
     "node": ">=10"

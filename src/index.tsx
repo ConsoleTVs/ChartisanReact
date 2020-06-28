@@ -27,13 +27,16 @@ export interface ChartisanChartProps<D> {
   options?: ChartisanOptions<D>
   updateOptions?: UpdateOptions<D>
   height?: string | number
-  controls?: ChartController<D>
+  controls?: null | ChartController<D>
 }
 
 export interface ChartProps<D> extends Omit<ChartisanChartProps<D>, 'chartisan'> {}
 
 export function useChartControls<D>(options?: ControllerOptions) {
-  const [controller] = useState(new ChartController<D>(options))
+  const [controller, setController] = useState<null | ChartController<D>>(null)
+  useEffect(() => {
+    setController(new ChartController<D>(options))
+  }, [])
   return controller
 }
 
@@ -52,8 +55,8 @@ export function ChartisanChart<D>({ height, chartisan, options, updateOptions, c
   }
 
   useEffect(() => {
-    const initOnDemand = controls?._options.initOnDemand
-    if (typeof initOnDemand !== 'undefined' && !initOnDemand) {
+    const initOnDemand = controls?._options?.initOnDemand
+    if (controls !== null && typeof initOnDemand !== 'undefined' && !initOnDemand) {
       createChart(options)
       return destroyChart
     }
@@ -68,21 +71,21 @@ export function ChartisanChart<D>({ height, chartisan, options, updateOptions, c
     const updateHandler = (event: CustomEvent) => {
       updateChart({ ...updateOptions, ...event.detail })
     }
-    controls?._eventTarget.addEventListener('update', updateHandler)
-    return () => controls?._eventTarget.removeEventListener('update', updateHandler)
+    controls?._eventTarget?.addEventListener('update', updateHandler)
+    return () => controls?._eventTarget?.removeEventListener('update', updateHandler)
   }, [controls, updateOptions, chart])
 
   useEffect(() => {
-    controls?._eventTarget.addEventListener('destroy', destroyChart)
-    return () => controls?._eventTarget.removeEventListener('destroy', destroyChart)
+    controls?._eventTarget?.addEventListener('destroy', destroyChart)
+    return () => controls?._eventTarget?.removeEventListener('destroy', destroyChart)
   }, [controls, chart])
 
   useEffect(() => {
     const createHandler = (event: CustomEvent) => {
       createChart({ ...options, ...event.detail })
     }
-    controls?._eventTarget.addEventListener('create', createHandler)
-    return () => controls?._eventTarget.removeEventListener('create', createHandler)
+    controls?._eventTarget?.addEventListener('create', createHandler)
+    return () => controls?._eventTarget?.removeEventListener('create', createHandler)
   }, [controls, options, chart])
 
   return <div style={chartStyle} ref={division} />

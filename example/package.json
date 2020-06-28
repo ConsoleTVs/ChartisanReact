@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@chartisan/echarts": "^2.2.3",
-    "@chartisan/react": "file:..",
+    "@eternum/chartisan_react": "file:..",
     "@types/node": "file:../node_modules/@types/node",
     "@types/react": "file:../node_modules/@types/react",
     "@types/react-dom": "file:../node_modules/@types/react-dom",

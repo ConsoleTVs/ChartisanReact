@@ -1,6 +1,6 @@
 {
   "name": "@eternum/chartisan_react",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "React adapter for any chartisan front-end on the web",
   "author": "ConsoleTVs",
   "license": "MIT",
@@ -50,8 +50,10 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1",
-    "typescript": "^3.7.5",
-    "@chartisan/chartisan": "^3.0.5"
+    "typescript": "^3.7.5"
+  },
+  "dependencies": {
+    "@chartisan/chartisan": "^3.1.0"
   },
   "files": [
     "dist"

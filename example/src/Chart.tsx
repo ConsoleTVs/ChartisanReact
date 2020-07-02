@@ -7,5 +7,5 @@ export type { UpdateOptions } from '@chartisan/chartisan'
 export type { CC }
 
 export const Chart: FC<ChartProps<CC>> = (props) => {
-  return <ChartisanChart chartisan={Chartisan} {...props} />
+  return <ChartisanChart<{}> chartisan={Chartisan} {...props} />
 }

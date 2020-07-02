@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect, useMemo } from 'react'
-import { Chartisan, isChartisan, ChartisanOptions, UpdateOptions } from '@chartisan/chartisan'
+import { Chartisan, ChartisanOptions, UpdateOptions, ChartState } from '@chartisan/chartisan'
 
 export interface ControllerOptions {
   initOnDemand: boolean
@@ -23,7 +23,7 @@ export class ChartController<D> {
 }
 
 export interface ChartisanChartProps<D> {
-  chartisan: isChartisan<D>
+  chartisan: any // Caused issues when used isChartisan<D>
   options?: ChartisanOptions<D>
   updateOptions?: UpdateOptions<D>
   height?: string | number
@@ -45,9 +45,12 @@ export function ChartisanChart<D>({ height, chartisan, options, updateOptions, c
   const division = useRef<HTMLDivElement>(null)
   const [chart, setChart] = useState<Chartisan<D>>()
   const destroyChart = () => {
-    chart?.destroy()
+    if (chart?.state() !== ChartState.Destroyed) {
+      chart?.destroy()
+    }
   }
   const createChart = (data?: ChartisanOptions<D>) => {
+    destroyChart()
     setChart(new chartisan({ el: division.current, ...data }))
   }
   const updateChart = (data?: UpdateOptions<D>) => {

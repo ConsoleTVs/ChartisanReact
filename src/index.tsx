@@ -1,4 +1,4 @@
-import React, { createRef, useState, useEffect, useMemo } from 'react'
+import React, { useRef, useState, useEffect, useMemo } from 'react'
 import { Chartisan, isChartisan, ChartisanOptions, UpdateOptions } from '@chartisan/chartisan'
 
 export interface ControllerOptions {
@@ -42,26 +42,28 @@ export function useChartControls<D>(options?: ControllerOptions) {
 
 export function ChartisanChart<D>({ height, chartisan, options, updateOptions, controls }: ChartisanChartProps<D>) {
   const chartStyle = useMemo(() => ({ height }), [height])
-  const division = createRef<HTMLDivElement>()
+  const division = useRef<HTMLDivElement>(null)
   const [chart, setChart] = useState<Chartisan<D>>()
+  const destroyChart = () => {
+    chart?.destroy()
+  }
   const createChart = (data?: ChartisanOptions<D>) => {
     setChart(new chartisan({ el: division.current, ...data }))
   }
   const updateChart = (data?: UpdateOptions<D>) => {
     chart?.update(data)
   }
-  const destroyChart = () => {
-    chart?.destroy()
-  }
 
   useEffect(() => {
-    const initOnDemand = controls?._options?.initOnDemand
-    if (controls !== null && typeof initOnDemand !== 'undefined' && !initOnDemand) {
-      createChart(options)
-      return destroyChart
+    if (controls !== null) {
+      const initOnDemand = typeof controls !== 'undefined' ? controls._options.initOnDemand : false
+      if (!initOnDemand) {
+        createChart(options)
+        return () => destroyChart()
+      }
     }
     return () => {}
-  }, [controls, options])
+  }, [controls])
 
   useEffect(() => {
     updateChart(updateOptions)

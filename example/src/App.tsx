@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
-import { Chart, useChartControls, CC } from './Chart'
+import { Chart, useChartControls, CC, UpdateOptions } from './Chart'
 
 const randomData = (values: number) => Array.from({ length: values }, () => Math.floor(Math.random() * 100))
 
@@ -14,12 +14,22 @@ const data = () => ({
 
 const App = () => {
   const controls = useChartControls<CC>({ initOnDemand: true })
+  const [update, setUpdate] = useState<UpdateOptions<CC>>({ data: data(), background: true })
+  useEffect(() => {
+    const handler = setInterval(() => {
+      setUpdate({ data: data(), background: true })
+    }, 2000)
+    return () => clearInterval(handler)
+  }, [])
   return (
     <>
-      <button onClick={() => controls?.create({ data: data() })}>Create Chart</button>
-      <button onClick={() => controls?.update({ data: data(), background: true })}>Update Chart</button>
-      <button onClick={() => controls?.destroy()}>Destroy Chart</button>
-      <Chart height={500} controls={controls} />
+      <div>
+        <button onClick={() => controls?.create({ data: data() })}>Create Chart</button>
+        <button onClick={() => controls?.update({ data: data(), background: true })}>Update Chart</button>
+        <button onClick={() => controls?.destroy()}>Destroy Chart</button>
+        {true && <Chart height={500} controls={controls} />}
+      </div>
+      <Chart height={500} options={{ data: data() }} updateOptions={update} />
     </>
   )
 }

@@ -1,6 +1,6 @@
 {
   "name": "@eternum/chartisan_react",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "React adapter for any chartisan front-end on the web",
   "author": "ConsoleTVs",
   "license": "MIT",
